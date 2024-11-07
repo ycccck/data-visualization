@@ -1,6 +1,6 @@
 // data from Data.GOV
 // code reference from MM621 demos
-// icon images from pixbay cretive common source
+// icon images from pixbay creative common source
 
 let data;
 
