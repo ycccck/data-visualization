@@ -85,7 +85,9 @@ function draw() {
         // show all, when mouse is pressed
         if (mouseIsPressed){
           ellipse(x, y - rF + 100, rF * 2);
-          ellipse(x, y - rN + 250, rN * 2);
+          if (rN > 0){
+            ellipse(x, y - rN + 250, rN * 2);
+          }
           ellipse(x, y - rR + 400, rR * 2);
         }
       }
