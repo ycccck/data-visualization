@@ -53,7 +53,6 @@ function draw() {
     let fossilPro = data.getColumn("Total Fossil Fuels Production");
     let nuclearPro = data.getColumn("Nuclear Electric Power Production");
     let renewPro = data.getColumn("Total Renewable Energy Production");
-    // console.log(year);
 
     // for loop based on the number of rows, i = 74
       for (let i = 0; i < data.getRowCount(); i++) {
@@ -66,29 +65,40 @@ function draw() {
         noFill();
         strokeWeight(3);
         stroke(100, i * 3, i * 3);
-
-        // fossil fuel production, when hover over
-        let dF = dist(imgX, imgY, mouseX, mouseY);
-        if (rF > 0 && dF < 50) {
-          ellipse(x, y - rF + 100, rF * 2);
-        }
-        // nuclear electric power production, when hover over
-        let dN = dist(imgX, imgY+imgd, mouseX, mouseY);
-        if (rN > 0 && dN < 50) {
+        // show all
+        ellipse(x, y - rF + 100, rF * 2);
+        if (rN > 0){
           ellipse(x, y - rN + 250, rN * 2);
-        }
-        // renewable energe production, when hover over
-        let dR = dist(imgX, imgY+imgd*2, mouseX, mouseY);
-        if (rR > 0 && dR < 50) {
-          ellipse(x, y - rR + 400, rR * 2);
-        }
-        // show all, when mouse is pressed
-        if (mouseIsPressed){
-          ellipse(x, y - rF + 100, rF * 2);
-          if (rN > 0){
-            ellipse(x, y - rN + 250, rN * 2);
           }
+        ellipse(x, y - rR + 400, rR * 2);
+
+        // fossil fuel production, when hover over hightlight the circle and show the amount
+        let dF = dist(x, y  + 100, mouseX, mouseY);
+        if (dF < 5) {
+          fill(100, i * 3, i * 3);
+          noStroke();
+          ellipse(x, y - rF + 100, rF * 2);
+          textSize(20);
+          text (rF, x, y + 120);
+        }
+        // nuclear electric power production, when hover over hightlight the circle and show the amount
+        let dN = dist(x, y + 250, mouseX, mouseY);
+        if (dN < 5) {
+          fill(100, i * 3, i * 3);
+          noStroke();
+          ellipse(x, y - rN + 250, rN * 2);
+          textSize(20);
+          text (rN, x, y + 270);
+        }
+        // renewable energe production, when hover over hightlight the circle and show the amount
+        let dR = dist(x, y + 400, mouseX, mouseY);
+        if (dR < 5) {
+          fill(100, i * 3, i * 3);
+          noStroke();
           ellipse(x, y - rR + 400, rR * 2);
+          // textSize(20);
+          textSize(20);
+          text (rR, x, y + 420);
         }
       }
   }
